@@ -1,8 +1,8 @@
 "use client";
 
-import { useModalContext } from "@/app/infraestucture/context/modal-context";
 import { ModalContent } from "../atoms/Modal-content";
 import { ButtonClose } from "../atoms/Button-close";
+import { useModalContext } from "@/app/infraestructure/context/modal-context";
 
 
 export const Modal = () => {

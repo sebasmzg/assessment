@@ -31,7 +31,7 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center py-2 mt-40">
         <div className="max-w-2xl p-4 text-center">
           <div className="mb-8">
-            <h1 className="text-5xl font-bold">
+            <h1 className="text-5xl font-bold text-[#7692ff]">
               Control y gestión de vehículos
             </h1>
           </div>

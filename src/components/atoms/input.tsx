@@ -14,7 +14,7 @@ export const Input = ({
 }: InputProps) => {
   return (
     <div className="flex items-center">
-      <input type={type} name={name} placeholder={placeholder} className={`w-full p-2 border  ${error ? 'border-red-500' : 'border-gray-300'} rounded`}
+      <input type={type} name={name} placeholder={placeholder} className={`w-full p-2 border  ${error ? 'border-red-500' : 'border-gray-300'} rounded-xl`}
         {...props}/>
       {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>

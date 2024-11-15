@@ -1,24 +1,18 @@
 import { ILoginRequest } from "@/app/core/application/dto/auth";
-import { AuthService } from "@/app/infraestucture/services/auth.service";
+import { AuthService } from "@/app/infraestructure/services/auth.service";
 import NextAuth, { NextAuthOptions, Session } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 interface AuthToken {
   id?: string;
   token?: string;
-  photo?: string;
-  role?: string;
-  name?: string;
   email?: string;
 }
 
 interface AuthUser {
   id: string;
-  name: string;
   email: string;
   token: string;
-  role: string;
-  photo: string;
 }
 
 export interface CustomSession extends Session {
@@ -26,8 +20,6 @@ export interface CustomSession extends Session {
     id?: string;
     token?: string;
     email?: string | null;
-    photo?: string | null;
-    role?: string | null;
   };
 }
 
@@ -56,10 +48,8 @@ export const authOptions: NextAuthOptions = {
           const response = await authService.login(loginRequest);
           return {
             email: response.data.user.email,
-            id: response.data.user.sub.toString(),
+            id: response.data.user.id.toString(),
             token: response.data.access_token,
-            photo: response.data.user.photo,
-            role: response.data.user.role,
           } as AuthUser;
 
         } catch (error) {
@@ -77,11 +67,10 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         const authUser = user as AuthUser;
         token.sub = authUser.id;
-        token.picture = authUser.photo;
-        token.name = authUser.name;
+
         token.email = authUser.email;
         token.token= authUser.token;
-        token.role = authUser.role;
+
       }
       return token;
     },
@@ -89,9 +78,10 @@ export const authOptions: NextAuthOptions = {
       const customSession = session as CustomSession;
       customSession.user.id = (token as AuthToken).id;
       customSession.user.token = (token as AuthToken).token;
-      customSession.user.photo = (token as AuthToken).photo;
-      customSession.user.role = (token as AuthToken).role;
       customSession.user.email = (token as AuthToken).email;
+      console.log("session", session);
+      console.log("custom session", customSession);
+      console.log("token", token);
       return customSession;
     },
 

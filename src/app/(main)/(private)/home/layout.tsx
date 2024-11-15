@@ -1,7 +1,7 @@
-import NavBar from "@/components/molecules/NavBar";
+import { ModalProvider } from "@/app/infraestructure/context/modal-context";
 import AuthGuard from "../guard/AuthGuard";
-import { ModalProvider } from "@/app/infraestucture/context/modal-context";
 import { Modal } from "@/components/molecules/Modal";
+import Sidebar from "@/components/organisms/SideBar";
 
 export default function HomeLayout({
   children,
@@ -11,8 +11,8 @@ export default function HomeLayout({
   return (
     <ModalProvider>
       <AuthGuard>
-        <div className="flex flex-col">
-          <NavBar />
+        <div className="flex">
+          <div><Sidebar/></div>
           <div>{children}</div>
         </div>
       </AuthGuard>

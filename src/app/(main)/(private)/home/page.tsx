@@ -1,8 +1,10 @@
-import Dashboard from "@/components/layout/Dashboard";
+import { Vehicles } from "@/components/layouts/Vehicles";
 
 const HomePage = () => {
   return (
-    <Dashboard />
+    <div>
+      <Vehicles />
+    </div>
   );
 };
 

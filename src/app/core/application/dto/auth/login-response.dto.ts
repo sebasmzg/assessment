@@ -6,12 +6,10 @@ export interface ILoginResponse {
 
 export interface Data {
     access_token: string;
-    user:         User;
+    user:         IUser;
 }
 
-export interface User {
+export interface IUser {
     email: string;
-    sub:   number;
-    role:  string;
-    photo: string;
+    id:    number;
 }

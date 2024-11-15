@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AuthProvider } from "./infraestructure/context/auth-provider";
 
 export const metadata: Metadata = {
   title: "transport Solutions S.A",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="min-h-screen bg-[#f5f5f5]">
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }
