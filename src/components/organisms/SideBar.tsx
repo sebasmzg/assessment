@@ -1,6 +1,7 @@
 "use client";
 
 import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 
 export default function Sidebar() {
 
@@ -63,7 +64,7 @@ export default function Sidebar() {
               />
             </svg>
           </div>
-          <span className="font-medium">Vehículos</span>
+          <span className="font-medium"><Link href={"/home"}>Vehículos</Link></span>
         </button>
         <button
           onClick={handleLogout}
