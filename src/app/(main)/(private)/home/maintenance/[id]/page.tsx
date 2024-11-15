@@ -1,19 +1,17 @@
 "use client";
 
 import { useModalContext } from "@/app/infraestructure/context/modal-context";
-import { useMaintenance } from "@/app/infraestructure/hooks/useMaintenance";
 import { useVehicleDetails } from "@/app/infraestructure/hooks/useVehicleDetails";
 import { Button } from "@/components/atoms/Button";
+import Maintenance from "@/components/organisms/maintenance/maintenance";
 import { CreateVehicleTemplate } from "@/components/templates/Create-vehicle";
+import { Main } from "next/document";
 import Image from "next/image";
 
 const maintenance = ({ params }: { params: { id: string } }) => {
   const id = params.id;
   const { openModal, setModalContent } = useModalContext();
   const { vehicleDetails } = useVehicleDetails(id);
-  const { maintenanceData } = useMaintenance(id);
-
-  console.log(maintenanceData);
 
   console.log(vehicleDetails);
 
@@ -23,9 +21,9 @@ const maintenance = ({ params }: { params: { id: string } }) => {
   };
 
   return (
-    <div className="p-8 w-max">
+    <div className="p-8">
       <h1 className="text-2xl font-bold mb-4">Mantenimientos del vehiculo</h1>
-      <div className="flex items-center relative w-max overflow-hidden">
+      <div className="flex items-center relative">
         <div>
           {vehicleDetails?.photo ? (
             <Image
@@ -50,7 +48,7 @@ const maintenance = ({ params }: { params: { id: string } }) => {
             "Datos del vehículo no disponibles"
           )}
         </div>
-        <div className="absolute top-0 right-0">
+        <div className="absolute top-2 right-2">
           <Button
             icon={
               <svg
@@ -104,18 +102,8 @@ const maintenance = ({ params }: { params: { id: string } }) => {
         />
       </div>
       <div>
-        <table className="table-auto w-full mt-4">
-          <thead>
-            <tr>
-              <th className="px-4 py-2">Fecha</th>
-              <th className="px-4 py-2">Descripción</th>
-              <th className="px-4 py-2">Costo</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-          </tbody>
-        </table>
+        aquí va la tabla de mantenimientos...
+        si tuviera una
       </div>
     </div>
   );
